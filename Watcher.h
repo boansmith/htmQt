@@ -2,6 +2,9 @@
 #define WATCHER_H
 
 #include <QObject>
+#include <QList>
+
+class Column;
 
 /**
  * @brief The Watcher class
@@ -16,9 +19,14 @@ class Watcher : public QObject
 public:
     explicit Watcher(QObject *parent = 0);
 
+    void getActiveColumns();
+
 signals:
 
 public slots:
+
+private:
+    QList<Column*> m_listActiveColumns;
 };
 
 #endif // WATCHER_H

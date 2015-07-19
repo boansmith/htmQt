@@ -37,6 +37,7 @@ public:
 
     float boost() const;
 
+    // for Watcher, set the boost of this column
     void setBoost(float fBoost);
 
 private:
