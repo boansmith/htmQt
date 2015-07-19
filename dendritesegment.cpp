@@ -3,7 +3,7 @@
 #include "synapse.h"
 
 
-DendriteSegment::DendriteSegment(int nId, QObject *parent)
+DendriteSegment::DendriteSegment(QObject *parent)
     :QObject(parent)
 {
     m_nActivatedSynapse = 0;

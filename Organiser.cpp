@@ -86,7 +86,7 @@ void Organiser::buildColumns(int nWidth, int nHeight)
 
 bool Organiser::start()
 {
-
+    return true;
 }
 QList<Column *> Organiser::listColumns() const
 {
@@ -115,6 +115,8 @@ bool Organiser::connectElements()
             m_listColumns.at(j)->dendriteSegment()->fillSynapses(sTmp);
         }
     }
+
+    return true;
 
 }
 

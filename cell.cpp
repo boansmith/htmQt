@@ -48,7 +48,7 @@ void Cell::connectDendriteSegments()
     }
 
     // disconnect at first, to cover the changes
-    QList<Synapse*>::Iterator iter;
+    QList<DendriteSegment*>::Iterator iter;
     for (iter = m_listDendriteSegment.begin(); iter != m_listDendriteSegment.end(); ++iter)
     {
         disconnect((*iter), SIGNAL(activated()), this, SLOT(onRecvSegmentActivated()));
