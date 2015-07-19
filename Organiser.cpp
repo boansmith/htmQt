@@ -63,7 +63,7 @@ void Organiser::buildColumns()
 
 /**
  * @brief Organiser::buildColumns
- *        the same with above but with the width and height specified
+ *        the same with above but need the width and height to be specified
  * @param nWidth
  * @param nHeight
  * @return
@@ -105,6 +105,7 @@ bool Organiser::connectElements()
     Q_ASSERT(!m_listColumns.isEmpty());
     Q_ASSERT(!m_listInputs.isEmpty());
 
+    // first, link input elements with colums through synapses
     for (int i=0; i<m_listInputs.size(); ++i)
     {
         for (int j=0; j<m_listColumns.size(); ++i)
@@ -116,7 +117,22 @@ bool Organiser::connectElements()
         }
     }
 
-    return true;
+    // then, for every input element, connect their synapses
+    QList<InputElement*>::Iterator iterInput;
+    for (iterInput=m_listInputs.begin(); iterInput!=m_listInputs.end(); ++iterInput)
+    {
+        (*iterInput)->connectSynapses();
+    }
 
+    // then, for every column, connect its dendriteSegment
+    // for every dendriteSegment of the column, connect its synapses
+    QList<Column*>::iterator iterCol;
+    for (iterCol=m_listColumns.begin(); iterCol!=m_listColumns.end(); ++iterCol)
+    {
+        (*iterCol)->connectDendriteSegment();
+        (*iterCol)->dendriteSegment()->connectSynapses();
+    }
+
+    return true;
 }
 
