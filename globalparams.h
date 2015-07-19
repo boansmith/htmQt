@@ -1,0 +1,28 @@
+#ifndef GLOBALPARAMS_H
+#define GLOBALPARAMS_H
+
+class GlobalParams
+{
+public:
+
+    // 一个synapse被认定为 connected 时其permanence的最小值
+    static const float    m_fPermConnected;
+
+    // 学习时synapse的permanence的增量
+    static const float    m_fDeltaPermInc;
+    static const float    m_fDeltaPermDec;
+
+    // 每个column中的cell的个数
+    static const int      m_nCellsPerCol;
+
+    // 当一个dendrite segment 被认定为active时的thresh，active的synapse的个数
+    static const int      m_nActiveThreshHold;
+
+    static const int      m_nWidthInput;
+    static const int      m_nHeightInput;
+
+    static const int      m_nWidthColumn;
+    static const int      m_nHeightColumn;
+};
+
+#endif // GLOBALPARAMS_H
