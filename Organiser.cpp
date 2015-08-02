@@ -55,6 +55,7 @@ void Organiser::buildColumns()
             Column* columnTmp = new Column(i*nWidth+j);
             m_listColumns << columnTmp;
 
+            // every column has only one proximal dendriteSegment
             columnTmp->setDendriteSegment(new DendriteSegment);
         }
     }
@@ -77,7 +78,7 @@ void Organiser::buildColumns(int nWidth, int nHeight)
             Column* columnTmp = new Column(i*nWidth+j);
             m_listColumns << columnTmp;
 
-            //proximal dendriteSegment has the same id as the column it attached
+            // every column has only one proximal dendriteSegment
             columnTmp->setDendriteSegment(new DendriteSegment);
 
         }
@@ -106,6 +107,7 @@ bool Organiser::connectElements()
     Q_ASSERT(!m_listInputs.isEmpty());
 
     // first, link input elements with colums through synapses
+    // every inputElement links to all the columns
     for (int i=0; i<m_listInputs.size(); ++i)
     {
         for (int j=0; j<m_listColumns.size(); ++i)

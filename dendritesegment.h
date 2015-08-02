@@ -16,7 +16,16 @@ public:
     // to cover the changes, public these functions
     void connectSynapses();
 
+    // ****   THIS IS AN IMPORTANT STEP ****
+    // check if the valid connected synapses this time exceed the threshhold, if so, emit the activated signal
+    // need to clear the m_nActivatedSynapses every time?
     void check();
+
+    // clear the m_nActivatedSynapses
+    void clearActivatedSynapses();
+
+    bool isSequence() const;
+    void setSequence(bool isSequence);
 
 signals:
     /**
@@ -35,13 +44,15 @@ private:
     // 用于计算 activated synapse 的连接数
     int m_nActivatedSynapse;
 
-    // 用于计算没有激活的次数
+    // 用于计算激活的次数
     int m_nActiveTimes;
 
     // synapses for receiving signal
     QList<Synapse*> m_listSynapses;
 
-
+    // only for distal dendriteSegments
+    // indicating if the distal dendriteSegments attend the cell's prediction
+    bool m_bIsSequence;
 };
 
 #endif // DENDRITESEGMENT_H

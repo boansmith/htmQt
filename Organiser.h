@@ -48,7 +48,7 @@ private:
 
     // various resources stored here,
     // it's definitely a pool
-    // mainly used for rebuilding from text
+    // mainly used for rebuilding from JSON
     // Through every elemnt's ### ID ###(need an protocol) to tell which PARENT they belong to.
     QList<InputElement*>    m_listInputs;
     QList<Column*>          m_listColumns;

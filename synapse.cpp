@@ -56,10 +56,25 @@ bool Synapse::isActivated()
 
 void Synapse::incPerm()
 {
-    m_fPerm += GlobalParams::m_fDeltaPermInc;
+
+
+    m_fPerm += m_fPermTmprlDelta;
+    m_fPermTmprlDelta = 0;
 }
 
 void Synapse::decPerm()
 {
-    m_fPerm -= GlobalParams::m_fDeltaPermDec;
+
+    m_fPerm -= m_fPermTmprlDelta;
+    m_fPermTmprlDelta = 0;
+}
+
+void Synapse::incPermTemporal()
+{
+    m_fPermTmprlDelta += GlobalParams::m_fDeltaPermInc;
+}
+
+void Synapse::decPermTemporal()
+{
+    m_fPermTmprlDelta += GlobalParams::m_fDeltaPermDec;
 }

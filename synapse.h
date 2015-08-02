@@ -33,12 +33,24 @@ public:
 
     /**
      * @brief process permanence
+     *        process permanently
      */
     void incPerm();
     void decPerm();
 
+    /**
+     * @brief incPermTemporal
+     *        process temporally
+     */
+    void incPermTemporal();
+    void decPermTemporal();
+
 private:
     float   m_fPerm;
+
+    // 是一个 temporal 的增量，
+    // every time when a perm has been processed( inc or dec ), m_fPermTmprDelta will be cleared.
+    float   m_fPermTmprlDelta;
 
     /**
      * @brief m_bIsContributed

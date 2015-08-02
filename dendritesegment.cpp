@@ -45,7 +45,22 @@ void DendriteSegment::check()
     }
 }
 
+void DendriteSegment::clearActivatedSynapses()
+{
+    m_nActivatedSynapse = 0;
+}
+
 void DendriteSegment::onRecv()
 {
     m_nActivatedSynapse++;
 }
+bool DendriteSegment::isSequence() const
+{
+    return m_bIsSequence;
+}
+
+void DendriteSegment::setSequence(bool bIsSequence)
+{
+    m_bIsSequence = bIsSequence;
+}
+
