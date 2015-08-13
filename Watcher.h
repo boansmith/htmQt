@@ -5,6 +5,7 @@
 #include <QList>
 
 class Column;
+class Organiser;
 
 /**
  * @brief The Watcher class
@@ -21,12 +22,20 @@ public:
 
     void getActiveColumns();
 
+
+    // create organiser, create one layer
+    void init();
+
+    // start to process
+    bool start();
+
 signals:
 
 public slots:
 
 private:
     QList<Column*> m_listActiveColumns;
+    Organiser*     m_layer1;
 };
 
 #endif // WATCHER_H

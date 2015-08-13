@@ -34,8 +34,6 @@ public:
     // connect various elements
     bool connectElements();
 
-    // start to process
-    bool start();
 
     // for Watcher
     QList<Column *> listColumns() const;

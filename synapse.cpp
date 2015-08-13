@@ -24,7 +24,7 @@ Synapse::Synapse(int nId, QObject *parent) :
 
     qDebug() << "random delta: " << delta << "\n";
 
-    m_fPerm = GlobalParams::m_fPermConnected + delta;
+    m_fPerm = GlobalParams::m_fPermConnected*(1+delta);
 }
 
 

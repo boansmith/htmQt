@@ -22,14 +22,7 @@ void Organiser::fillInputs(const char *data)
     {
         for (int j=0; j<nWidth; ++j)
         {
-            if (*(data+i*nWidth+j) == 0)
-            {
-                m_listInputs << new InputElement(false);
-            }
-            else
-            {
-                m_listInputs << new InputElement(true);
-            }
+            m_listInputs << new InputElement(false);
         }
     }
 }
@@ -85,10 +78,7 @@ void Organiser::buildColumns(int nWidth, int nHeight)
     }
 }
 
-bool Organiser::start()
-{
-    return true;
-}
+
 QList<Column *> Organiser::listColumns() const
 {
     return m_listColumns;
