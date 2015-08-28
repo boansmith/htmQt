@@ -98,6 +98,8 @@ bool Organiser::connectElements()
 
     // first, link input elements with colums through synapses
     // every inputElement links to all the columns
+    // THIS PLACE NEED TO BE MODIFIED ACCORDING TO YongGe's advice
+    // every input element should just link to a subset of the columns 2015年8月28日09:32:31 boan
     for (int i=0; i<m_listInputs.size(); ++i)
     {
         for (int j=0; j<m_listColumns.size(); ++i)
