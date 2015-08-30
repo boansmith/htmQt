@@ -100,6 +100,15 @@ bool Organiser::connectElements()
     // every inputElement links to all the columns
     // THIS PLACE NEED TO BE MODIFIED ACCORDING TO YongGe's advice
     // every input element should just link to a subset of the columns 2015年8月28日09:32:31 boan
+
+
+    // in general, the number of inputElement is (much) larger thant that of column
+    int nTotalLink = m_listInputs.size()*1.5;
+    int nNumOverlap = (nTotalLink-m_listInputs.size())/m_listColumns.size();
+
+
+
+
     for (int i=0; i<m_listInputs.size(); ++i)
     {
         for (int j=0; j<m_listColumns.size(); ++i)
