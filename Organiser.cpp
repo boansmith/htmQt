@@ -110,7 +110,8 @@ bool Organiser::connectElements()
     {
         fBeginRatio = float(i)/float(m_listInputs.size());
         fEndRatio   = fBeginRatio + fWidthOverlap;
-        for (int j=m_listColumns.size()*fBeginRatio; j<m_listColumns.size()*fEndRatio; ++j)
+        int nColSize = m_listColumns.size();
+        for (int j=nColSize*fBeginRatio; j<(nColSize*fEndRatio > nColSize ? nColSize : nColSize*fEndRatio); ++j)
         {
             Synapse* sTmp = new Synapse(j);
 
