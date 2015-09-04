@@ -96,11 +96,8 @@ bool Organiser::connectElements()
     Q_ASSERT(!m_listColumns.isEmpty());
     Q_ASSERT(!m_listInputs.isEmpty());
 
-    // first, link input elements with colums through synapses
+    // first, link input elements with columns through synapses
     // every input element should just link to a subset of the columns
-    // in general, the number of inputElement is (much) less than that of column
-    int nTotalLink = m_listInputs.size()*1.5;
-    int nNumOverlap = (nTotalLink-m_listInputs.size())/m_listColumns.size();
     
     float fWidthOverlap = 0.05;
     float fBeginRatio   = 0.0;
@@ -111,7 +108,8 @@ bool Organiser::connectElements()
         fBeginRatio = float(i)/float(m_listInputs.size());
         fEndRatio   = fBeginRatio + fWidthOverlap;
         int nColSize = m_listColumns.size();
-        for (int j=nColSize*fBeginRatio; j<(nColSize*fEndRatio > nColSize ? nColSize : nColSize*fEndRatio); ++j)
+        int nUpper = nColSize*fEndRatio > nColSize ? nColSize : nColSize*fEndRatio;
+        for (int j=nColSize*fBeginRatio; j<nUpper; ++j)
         {
             Synapse* sTmp = new Synapse(j);
 
