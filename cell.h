@@ -41,6 +41,9 @@ private:
     bool m_bIsActive;
     bool m_bIsPredictive;
 
+    bool m_bIsChosen;
+    bool m_bIsLearning;
+
 
     /*
      * 由此cell发出去的 dendrite segment, 作用为搜集其它细胞的active状态， 以便使自己成为 predictive

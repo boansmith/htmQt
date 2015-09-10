@@ -51,8 +51,11 @@ private:
     QList<Synapse*> m_listSynapses;
 
     // only for distal dendriteSegments
-    // indicating if the distal dendriteSegments attend the cell's prediction
+    // indicating if the distal dendriteSegments contribute to the cell's prediction
     bool m_bIsSequence;
+
+    // learning switch
+    bool m_bIsLearning;
 };
 
 #endif // DENDRITESEGMENT_H

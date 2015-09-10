@@ -7,6 +7,9 @@ Cell::Cell(QObject *parent) : QObject(parent)
 {
     m_bIsActive = false;
     m_bIsPredictive = false;
+
+    m_bIsChosen = false;
+    m_bIsLearning = false;
 }
 
 void Cell::fillDendriteSegments(DendriteSegment *d)

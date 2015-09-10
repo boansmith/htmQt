@@ -56,17 +56,24 @@ bool Synapse::isActivated()
 
 void Synapse::incPerm()
 {
-
-
     m_fPerm += m_fPermTmprlDelta;
-    m_fPermTmprlDelta = 0;
+    m_fPermTmprlDelta = 0.f;
+
+    if (m_fPerm > 1.0)
+    {
+        m_fPerm = 1.0;
+    }
 }
 
 void Synapse::decPerm()
 {
-
     m_fPerm -= m_fPermTmprlDelta;
-    m_fPermTmprlDelta = 0;
+    m_fPermTmprlDelta = 0.f;
+
+    if (m_fPerm < 0.0)
+    {
+        m_fPerm = 0.0;
+    }
 }
 
 void Synapse::incPermTemporal()

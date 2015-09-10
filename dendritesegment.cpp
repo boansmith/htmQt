@@ -8,6 +8,8 @@ DendriteSegment::DendriteSegment(QObject *parent)
 {
     m_nActivatedSynapse = 0;
     m_nActiveTimes = 0;
+    m_bIsSequence = false;
+    m_bIsLearning = false;
 }
 
 void DendriteSegment::fillSynapses(Synapse *s)
