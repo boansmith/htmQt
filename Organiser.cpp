@@ -22,6 +22,7 @@ void Organiser::fillInputs(const char *data)
     {
         for (int j=0; j<nWidth; ++j)
         {
+            // need to do: set the InputElement's value according to  'data'
             m_listInputs << new InputElement(false);
         }
     }
