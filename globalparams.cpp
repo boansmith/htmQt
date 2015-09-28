@@ -9,4 +9,4 @@ const float GlobalParams::m_fDeltaPermInc       = 0.01;
 const float GlobalParams::m_fDeltaPermDec       = 0.01;
 const int   GlobalParams::m_nWidthColumn        = 10;
 const int   GlobalParams::m_nHeightColumn       = 10;
-const float GlobalParams::m_fActiveRatio        = 0.2;
+const float GlobalParams::m_fDesiredActiveRatio        = 0.2;

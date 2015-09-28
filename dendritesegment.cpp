@@ -38,6 +38,22 @@ void DendriteSegment::connectSynapses()
     }
 }
 
+void DendriteSegment::updateSynapsesParams()
+{
+    QList<Synapse*>::iterator iter;
+    for (iter=m_listSynapses.begin(); iter!=m_listSynapses.end(); ++iter)
+    {
+        if ((*iter)->isActivated())
+        {
+            (*iter)->incPerm();
+        }
+        else
+        {
+            (*iter)->decPerm();
+        }
+    }
+}
+
 void DendriteSegment::check()
 {
     if (m_nActivatedSynapse >= GlobalParams::m_nActiveThreshHold)
@@ -56,6 +72,11 @@ void DendriteSegment::onRecv()
 {
     m_nActivatedSynapse++;
 }
+QList<Synapse *> DendriteSegment::listSynapses() const
+{
+    return m_listSynapses;
+}
+
 bool DendriteSegment::isSequence() const
 {
     return m_bIsSequence;

@@ -56,7 +56,6 @@ private:
 
     // boost
     float m_fBoost;
-
 };
 
 #endif // COLUMN_H

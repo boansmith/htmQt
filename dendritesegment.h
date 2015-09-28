@@ -16,6 +16,8 @@ public:
     // to cover the changes, public these functions
     void connectSynapses();
 
+    void updateSynapsesParams();
+
     // ****   THIS IS AN IMPORTANT STEP ****
     // check if the valid connected synapses this time exceed the threshhold, if so, emit the activated signal
     // need to clear the m_nActivatedSynapses every time?
@@ -26,6 +28,8 @@ public:
 
     bool isSequence() const;
     void setSequence(bool isSequence);
+
+    QList<Synapse *> listSynapses() const;
 
 signals:
     /**

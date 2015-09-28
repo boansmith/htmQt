@@ -22,8 +22,15 @@ public:
 
     void getActiveColumns();
 
+    void updateParamsOfActiveColumns();
 
-    // create organiser, create one layer
+    // adjust the activity of all the synapses according to their performence
+    // including update the BOOST and PERMANENCES of the always "failed" synapses
+    void adjustActivity();
+
+
+    // create organiser
+    // one organiser is a layer
     void init();
 
     // start to process

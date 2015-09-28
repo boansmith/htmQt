@@ -31,6 +31,8 @@ public:
     bool isConnected();
     bool isActivated();
 
+    int activeTimes();
+
     /**
      * @brief process permanence
      *        process permanently
@@ -59,6 +61,8 @@ private:
     bool    m_bIsActivated;
 
     int     m_nId;
+
+    int     m_nActiveTimes;
 
 };
 

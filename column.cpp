@@ -84,7 +84,7 @@ int Column::id()
 
 int Column::overlap()
 {
-    return m_nOverlap;
+    return int(m_nOverlap*m_fBoost);
 }
 
 int Column::activeTimes() const

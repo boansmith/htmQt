@@ -10,6 +10,7 @@ Synapse::Synapse(int nId, float perm, QObject *parent) :
 {
     m_nId   = nId;
     m_fPerm = perm;
+    m_nActiveTimes = 0;
 }
 
 Synapse::Synapse(int nId, QObject *parent) :
@@ -35,6 +36,10 @@ void Synapse::onRecv()
     if (m_fPerm >= GlobalParams::m_fPermConnected)
     {
         m_bIsActivated = true;
+
+        // inc activeTimes
+        m_nActiveTimes++;
+
         emit activated();
     }
     else
@@ -52,6 +57,11 @@ bool Synapse::isConnected()
 bool Synapse::isActivated()
 {
     return m_bIsActivated;
+}
+
+int Synapse::activeTimes()
+{
+    return m_nActiveTimes;
 }
 
 void Synapse::incPerm()

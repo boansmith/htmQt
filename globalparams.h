@@ -25,7 +25,7 @@ public:
     static const int      m_nHeightColumn;
 
     // 在所有 columns 当中，active 所占的比例
-    static const float    m_fActiveRatio;
+    static const float    m_fDesiredActiveRatio;
 };
 
 #endif // GLOBALPARAMS_H
