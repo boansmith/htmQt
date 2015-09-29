@@ -91,7 +91,7 @@ void Watcher::adjustActivity()
     {
         if ((*iter)->activeTimes() < minColumnActiveTimes)
         {
-
+            // need a boost function to update boost
         }
 
         QList<Synapse*> sTmp = (*iter)->dendriteSegment()->listSynapses();
@@ -100,7 +100,7 @@ void Watcher::adjustActivity()
         {
             if (sTmp.at(i)->activeTimes() < minSynapseActiveTimes)
             {
-
+                sTmp.at(i)->incPerm();
             }
         }
     }
