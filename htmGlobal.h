@@ -1,7 +1,7 @@
-#ifndef GLOBALPARAMS_H
-#define GLOBALPARAMS_H
+#ifndef HtmGlobal_H
+#define HtmGlobal_H
 
-class GlobalParams
+class HtmGlobal
 {
 public:
 
@@ -26,6 +26,8 @@ public:
 
     // 在所有 columns 当中，active 所占的比例
     static const float    m_fDesiredActiveRatio;
+
+    static float boostFunc(int colActiveTimes, int minColActiveTimes);
 };
 
-#endif // GLOBALPARAMS_H
+#endif // HtmGlobal_H
