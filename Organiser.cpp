@@ -1,5 +1,5 @@
 #include "Organiser.h"
-#include "globalparams.h"
+#include "htmGlobal.h"
 #include "cell.h"
 #include "column.h"
 #include "dendritesegment.h"
@@ -15,8 +15,8 @@ Organiser::Organiser(QObject *parent) : QObject(parent)
 // process binary inputs
 void Organiser::fillInputs(const char *data)
 {
-    int nWidth  = GlobalParams::m_nWidthInput;
-    int nHeight = GlobalParams::m_nHeightInput;
+    int nWidth  = HtmGlobal::m_nWidthInput;
+    int nHeight = HtmGlobal::m_nHeightInput;
 
     for (int i=0; i<nHeight; ++i)
     {
@@ -32,15 +32,15 @@ void Organiser::fillInputs(const char *data)
 
 /**
  * @brief Organiser::buildColumns
- *        according to GlobalParams, build the columns, set the proximal dendriteSegment
+ *        according to HtmGlobal, build the columns, set the proximal dendriteSegment
  *        in the Organiser's view, it can only see the column array and the proximal dendriteSegments
  *
  * @return
  */
 void Organiser::buildColumns()
 {
-    int nWidth  = GlobalParams::m_nWidthColumn;
-    int nHeight = GlobalParams::m_nHeightColumn;
+    int nWidth  = HtmGlobal::m_nWidthColumn;
+    int nHeight = HtmGlobal::m_nHeightColumn;
 
     for (int i=0; i<nHeight; ++i)
     {

@@ -1,5 +1,5 @@
 #include "synapse.h"
-#include "globalparams.h"
+#include "htmGlobal.h"
 #include <QTime>
 #include <QDebug>
 
@@ -25,7 +25,7 @@ Synapse::Synapse(int nId, QObject *parent) :
 
     qDebug() << "random delta: " << delta << "\n";
 
-    m_fPerm = GlobalParams::m_fPermConnected*(1+delta);
+    m_fPerm = HtmGlobal::m_fPermConnected*(1+delta);
 }
 
 
@@ -33,7 +33,7 @@ Synapse::Synapse(int nId, QObject *parent) :
 // 当然只有 input 是 valid， input 才会发出信号来激活此 slot
 void Synapse::onRecv()
 {
-    if (m_fPerm >= GlobalParams::m_fPermConnected)
+    if (m_fPerm >= HtmGlobal::m_fPermConnected)
     {
         m_bIsActivated = true;
 
@@ -50,7 +50,7 @@ void Synapse::onRecv()
 
 bool Synapse::isConnected()
 {
-    return (m_fPerm >= GlobalParams::m_fPermConnected);
+    return (m_fPerm >= HtmGlobal::m_fPermConnected);
 }
 
 // activated 是指收到valid input，同时synapse 处于 connected状态
@@ -88,10 +88,10 @@ void Synapse::decPerm()
 
 void Synapse::incPermTemporal()
 {
-    m_fPermTmprlDelta += GlobalParams::m_fDeltaPermInc;
+    m_fPermTmprlDelta += HtmGlobal::m_fDeltaPermInc;
 }
 
 void Synapse::decPermTemporal()
 {
-    m_fPermTmprlDelta += GlobalParams::m_fDeltaPermDec;
+    m_fPermTmprlDelta += HtmGlobal::m_fDeltaPermDec;
 }

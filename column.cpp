@@ -1,5 +1,5 @@
 #include "column.h"
-#include "globalparams.h"
+#include "htmGlobal.h"
 #include "cell.h"
 #include "dendritesegment.h"
 
@@ -13,7 +13,7 @@ Column::Column(int nId, QObject *parent) :
     m_fBoost            = 1.0;
 
     // fill each column with cells
-    for (int iCell=0; iCell<GlobalParams::m_nCellsPerCol; ++iCell)
+    for (int iCell=0; iCell<HtmGlobal::m_nCellsPerCol; ++iCell)
     {
         m_listCell << new Cell;
     }

@@ -1,7 +1,7 @@
 #include "Watcher.h"
 #include "Organiser.h"
 #include "column.h"
-#include "globalparams.h"
+#include "htmGlobal.h"
 #include "dendritesegment.h"
 #include "synapse.h"
 
@@ -32,7 +32,7 @@ void Watcher::getActiveColumns()
     qSort(listOverlaps.begin(), listOverlaps.end());
 
     // get the threshold of being active
-    int thresh = listOverlaps.at(int(listOverlaps.size()*(1.0-GlobalParams::m_fDesiredActiveRatio)));
+    int thresh = listOverlaps.at(int(listOverlaps.size()*(1.0-HtmGlobal::m_fDesiredActiveRatio)));
 
 
     // fill the activeColums, but clear first
@@ -89,10 +89,8 @@ void Watcher::adjustActivity()
     // traverse all the columns and synapses,  update their params
     for (iter=listCols.begin(); iter!=listCols.end(); ++iter)
     {
-        if ((*iter)->activeTimes() < minColumnActiveTimes)
-        {
             // need a boost function to update boost
-        }
+        (*iter)->setBoost(HtmGlobal::boostFunc((*iter)->activeTimes(), minColumnActiveTimes));
 
         QList<Synapse*> sTmp = (*iter)->dendriteSegment()->listSynapses();
 

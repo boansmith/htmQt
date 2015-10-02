@@ -18,19 +18,19 @@ SOURCES += main.cpp\
     dendritesegment.cpp \
     column.cpp \
     synapse.cpp \
-    globalparams.cpp \
     inputelement.cpp \
     Organiser.cpp \
-    Watcher.cpp
+    Watcher.cpp \
+    htmGlobal.cpp
 
 HEADERS  += mainwindow.h \
     cell.h \
     dendritesegment.h \
     column.h \
     synapse.h \
-    globalparams.h \
     inputelement.h \
     Organiser.h \
-    Watcher.h
+    Watcher.h \
+    htmGlobal.h
 
 FORMS    += mainwindow.ui

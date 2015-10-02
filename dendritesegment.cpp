@@ -1,5 +1,5 @@
 #include "dendritesegment.h"
-#include "globalparams.h"
+#include "htmGlobal.h"
 #include "synapse.h"
 
 
@@ -56,7 +56,7 @@ void DendriteSegment::updateSynapsesParams()
 
 void DendriteSegment::check()
 {
-    if (m_nActivatedSynapse >= GlobalParams::m_nActiveThreshHold)
+    if (m_nActivatedSynapse >= HtmGlobal::m_nActiveThreshHold)
     {
         m_nActiveTimes++;
         emit activated(m_nActivatedSynapse);
