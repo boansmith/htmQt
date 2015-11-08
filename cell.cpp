@@ -78,7 +78,7 @@ void Cell::setActive()
 {
     m_bIsActive = true;
 
-    // 如果cell变为active， 发送此cell变为active了的消息
+    // if the cell becomes active, send 'active' signal
     emit activated();
 }
 

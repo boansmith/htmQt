@@ -20,7 +20,7 @@ class Watcher : public QObject
 public:
     explicit Watcher(QObject *parent = 0);
 
-    void getActiveColumns();
+    QList<Column*> getActiveColumns();
 
     void updateParamsOfActiveColumns();
 

@@ -15,7 +15,7 @@ Watcher::Watcher(QObject *parent) : QObject(parent)
  *        just simply sort the overlap and get the thresh, the kth overlap,
  *        then if a column's overlap is larger than the thresh, add this column to the activeList
  */
-void Watcher::getActiveColumns()
+QList<Column *> Watcher::getActiveColumns()
 {
     // first get the kth overlap, to do this, we need a list of overlaps
     QList<int> listOverlaps;
@@ -44,6 +44,8 @@ void Watcher::getActiveColumns()
             m_listActiveColumns << (*iter);
         }
     }
+
+    return m_listActiveColumns;
 }
 
 void Watcher::updateParamsOfActiveColumns()

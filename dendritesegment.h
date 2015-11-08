@@ -31,6 +31,9 @@ public:
 
     QList<Synapse *> listSynapses() const;
 
+    bool isLearning() const;
+    void setLearning(bool isLearning);
+
 signals:
     /**
      * @brief activated

@@ -72,6 +72,16 @@ void DendriteSegment::onRecv()
 {
     m_nActivatedSynapse++;
 }
+bool DendriteSegment::isLearning() const
+{
+    return m_bIsLearning;
+}
+
+void DendriteSegment::setLearning(bool bIsLearning)
+{
+    m_bIsLearning = bIsLearning;
+}
+
 QList<Synapse *> DendriteSegment::listSynapses() const
 {
     return m_listSynapses;
