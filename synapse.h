@@ -52,7 +52,7 @@ private:
 
     // 是一个 temporal 的增量，
     // every time when a perm has been processed( inc or dec ), m_fPermTmprDelta will be cleared.
-    float   m_fPermTmprlDelta;
+    float   m_fPermTmpDelta;
 
     /**
      * @brief m_bIsContributed

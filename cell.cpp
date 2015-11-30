@@ -7,7 +7,6 @@ Cell::Cell(QObject *parent) : QObject(parent)
 {
     m_bIsActive = false;
     m_bIsPredictive = false;
-
     m_bIsChosen = false;
     m_bIsLearning = false;
 }
@@ -64,9 +63,23 @@ void Cell::connectDendriteSegments()
     }
 }
 
+void Cell::resetButPredictive()
+{
+    m_bIsActive =
+    m_bIsChosen =
+    m_bIsLearning = false;
+}
+
+void Cell::resetAll()
+{
+    m_bIsActive =
+    m_bIsChosen =
+    m_bIsLearning =
+    m_bIsPredictive = false;
+}
+
 void Cell::onRecvSegmentActivated()
 {
-
     // set to be predictive only if the cell is NOT ACTIVE
     if (!m_bIsActive)
     {
@@ -74,12 +87,30 @@ void Cell::onRecvSegmentActivated()
     }
 }
 
-void Cell::setActive()
+void Cell::setActive(bool b)
 {
-    m_bIsActive = true;
+    m_bIsActive = b;
 
-    // if the cell becomes active, send 'active' signal
-    emit activated();
+    if (b)
+    {
+        // if the cell becomes active, send 'active' signal
+        emit activated();
+    }
+}
+
+void Cell::setPredictive(bool b)
+{
+    m_bIsPredictive = b;
+}
+
+void Cell::setChosen(bool b)
+{
+    m_bIsChosen = b;
+}
+
+void Cell::setLearning(bool b)
+{
+    m_bIsLearning = b;
 }
 
 
@@ -91,5 +122,15 @@ bool Cell::isActive()
 bool Cell::isPredictive()
 {
     return m_bIsPredictive;
+}
+
+bool Cell::isChosen()
+{
+    return m_bIsChosen;
+}
+
+bool Cell::isLearning()
+{
+    return m_bIsLearning;
 }
 

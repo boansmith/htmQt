@@ -17,11 +17,12 @@ Synapse::Synapse(int nId, QObject *parent) :
     QObject(parent)
 {
     m_nId = nId;
+    m_nActiveTimes = 0;
 
     QTime time;
     time = QTime::currentTime();
     qsrand(time.msec() + time.second()*1000);
-    float delta = (qrand()%20- 10)*0.01;
+    float delta = (qrand()%200- 100)*0.01;
 
     qDebug() << "random delta: " << delta << "\n";
 
@@ -66,8 +67,8 @@ int Synapse::activeTimes()
 
 void Synapse::incPerm()
 {
-    m_fPerm += m_fPermTmprlDelta;
-    m_fPermTmprlDelta = 0.f;
+    m_fPerm += m_fPermTmpDelta;
+    m_fPermTmpDelta = 0.f;
 
     if (m_fPerm > 1.0)
     {
@@ -77,8 +78,8 @@ void Synapse::incPerm()
 
 void Synapse::decPerm()
 {
-    m_fPerm -= m_fPermTmprlDelta;
-    m_fPermTmprlDelta = 0.f;
+    m_fPerm -= m_fPermTmpDelta;
+    m_fPermTmpDelta = 0.f;
 
     if (m_fPerm < 0.0)
     {
@@ -88,10 +89,10 @@ void Synapse::decPerm()
 
 void Synapse::incPermTemporal()
 {
-    m_fPermTmprlDelta += HtmGlobal::m_fDeltaPermInc;
+    m_fPermTmpDelta += HtmGlobal::m_fDeltaPermInc;
 }
 
 void Synapse::decPermTemporal()
 {
-    m_fPermTmprlDelta += HtmGlobal::m_fDeltaPermDec;
+    m_fPermTmpDelta += HtmGlobal::m_fDeltaPermDec;
 }

@@ -9,7 +9,7 @@
  *  先准备好需要的元素， 然后进行对这些元素的操作， 定义这些元素之间的关系
  *  一个细胞应该有的状态： 1. active 2.predictive 3.gray
  *  一个细胞应该有的行为:  1. 通过dendriteSegment搜集周围的细胞的active状态，以便使自己处于predictive
- *                       2. 当自己处于active状态时，告知周围的细胞（发射信号给其它细胞的 dendriteSegment）
+ *                       2. 当自己处于active状态时，告知周围的细胞（发射信号给其它细胞的 dendriteSegment, 通过synapse）
  */
 
 class DendriteSegment;
@@ -26,7 +26,14 @@ public:
 
     // to cover the changes, public these functions
     void connectSynapses();
+
+    // connect dendriteSegments is to receive dendriteSegments' output
+    // i.e. dendriteSegments will send some signal
+    // but we connect these dendriteSegments to cells here
     void connectDendriteSegments();
+
+    void resetButPredictive();
+    void resetAll();
 
 
 signals:
@@ -37,13 +44,6 @@ public slots:
     void onRecvSegmentActivated();
 
 private:
-
-    bool m_bIsActive;
-    bool m_bIsPredictive;
-
-    bool m_bIsChosen;
-    bool m_bIsLearning;
-
 
     /*
      * 由此cell发出去的 dendrite segment, 作用为搜集其它细胞的active状态， 以便使自己成为 predictive
@@ -58,10 +58,23 @@ private:
 
 
 public:
-    void setActive();
+    void setActive(bool b);
+    void setPredictive(bool b);
+    void setChosen(bool b);
+    void setLearning(bool b);
 
     bool isActive();
     bool isPredictive();
+    bool isChosen();
+    bool isLearning();
+
+private:
+
+    bool m_bIsActive;
+    bool m_bIsPredictive;
+
+    bool m_bIsChosen;
+    bool m_bIsLearning;
 
 };
 
