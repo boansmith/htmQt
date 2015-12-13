@@ -16,6 +16,8 @@ class InputElement;
  * 各个部件在这里生成
  * 每一层， 只要处理好自己看到的事情就好。
  * 每一层做好自己的事情，则整个系统自然能很好的工作
+ * just build the architecture of the whole system,
+ * do not run it
  */
 
 class Organiser : public QObject
@@ -26,6 +28,8 @@ public:
 
     // process binary inputs
     void fillInputs(const char* data);
+
+    void fillInputs(const QByteArray& ba);
 
     // not only build columns, but also build what inside it.
     void buildColumns();

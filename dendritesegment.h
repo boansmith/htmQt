@@ -13,9 +13,6 @@ public:
 
     void fillSynapses(Synapse *s);
 
-    // to cover the changes, public these functions
-    void connectSynapses();
-
     void updateSynapsesParams();
 
     // ****   THIS IS AN IMPORTANT STEP ****

@@ -18,7 +18,6 @@ public:
     void checkValue();
 
     void fillSynapses(Synapse *s);
-    void connectSynapses();
 
 signals:
     void inputValid();

@@ -15,28 +15,9 @@ DendriteSegment::DendriteSegment(QObject *parent)
 void DendriteSegment::fillSynapses(Synapse *s)
 {
     m_listSynapses << s;
+    connect(s, SIGNAL(activated()), this, SLOT(onRecv()));
 }
 
-void DendriteSegment::connectSynapses()
-{
-    if (m_listSynapses.isEmpty())
-    {
-        return;
-    }
-
-    // disconnect at first, to cover the changes
-    QList<Synapse*>::Iterator iter;
-    for (iter = m_listSynapses.begin(); iter != m_listSynapses.end(); ++iter)
-    {
-        disconnect((*iter), SIGNAL(activated()), this, SLOT(onRecv()));
-    }
-
-    // then connect
-    for (iter = m_listSynapses.begin(); iter != m_listSynapses.end(); ++iter)
-    {
-        connect((*iter), SIGNAL(activated()), this, SLOT(onRecv()));
-    }
-}
 
 void DendriteSegment::updateSynapsesParams()
 {

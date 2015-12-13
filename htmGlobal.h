@@ -18,6 +18,7 @@ public:
     // 当一个dendrite segment 被认定为active时的thresh，active的synapse的个数
     static const int      m_nActiveThreshHold;
 
+    // the width and height of the input
     static const int      m_nWidthInput;
     static const int      m_nHeightInput;
 

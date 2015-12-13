@@ -30,6 +30,7 @@ void Column::fillCell(Cell *cell)
 void Column::setDendriteSegment(DendriteSegment *d)
 {
     m_dendriteSegment = d;
+    connect(m_dendriteSegment, SIGNAL(activated(int)), this, SLOT(onRecv(int)));
 }
 
 DendriteSegment *Column::dendriteSegment()
@@ -37,12 +38,6 @@ DendriteSegment *Column::dendriteSegment()
     return m_dendriteSegment;
 }
 
-void Column::connectDendriteSegment()
-{
-    Q_ASSERT(m_dendriteSegment != NULL);
-
-    connect(m_dendriteSegment, SIGNAL(activated(int)), this, SLOT(onRecv(int)));
-}
 
 
 // 如果有cell处于 predictive 状态， 则设定这些cell为active

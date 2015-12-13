@@ -28,6 +28,11 @@ void Organiser::fillInputs(const char *data)
     }
 }
 
+void Organiser::fillInputs(const QByteArray &ba)
+{
+    ba.size()
+}
+
 
 
 /**
@@ -97,9 +102,10 @@ bool Organiser::connectElements()
     Q_ASSERT(!m_listInputs.isEmpty());
 
     // first, link input elements with columns through synapses
-    // every input element should just link to a subset of the columns
+    // every column should connect to a subset of input elements
     
-    float fWidthOverlap = 0.05;
+    //float fWidthOverlap = 0.05;
+    float fWidthOverlap = 1.0/float(m_listColumns.size())+0.01;
     float fBeginRatio   = 0.0;
     float fEndRatio     = 0.0;
     
@@ -116,22 +122,6 @@ bool Organiser::connectElements()
             m_listInputs.at(i)->fillSynapses(sTmp);
             m_listColumns.at(j)->dendriteSegment()->fillSynapses(sTmp);
         }
-    }
-
-    // then, for every input element, connect their synapses
-    QList<InputElement*>::Iterator iterInput;
-    for (iterInput=m_listInputs.begin(); iterInput!=m_listInputs.end(); ++iterInput)
-    {
-        (*iterInput)->connectSynapses();
-    }
-
-    // then, for every column, connect its dendriteSegment
-    // for every dendriteSegment of the column, connect its synapses
-    QList<Column*>::iterator iterCol;
-    for (iterCol=m_listColumns.begin(); iterCol!=m_listColumns.end(); ++iterCol)
-    {
-        (*iterCol)->connectDendriteSegment();
-        (*iterCol)->dendriteSegment()->connectSynapses();
     }
 
     return true;

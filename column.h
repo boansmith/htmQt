@@ -15,10 +15,10 @@ public:
     ~Column(){}
 
     void fillCell(Cell* cell);
+
+    // when set the dendriteSegment, connect it BTW
     void setDendriteSegment(DendriteSegment* d);
     DendriteSegment* dendriteSegment();
-
-    void connectDendriteSegment();
 
     void setActive();
 
