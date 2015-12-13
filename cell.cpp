@@ -9,6 +9,7 @@ Cell::Cell(QObject *parent) : QObject(parent)
     m_bIsPredictive = false;
     m_bIsChosen = false;
     m_bIsLearning = false;
+    m_bWasActive = false;
 }
 
 void Cell::fillDendriteSegments(DendriteSegment *d)
@@ -65,6 +66,7 @@ void Cell::connectDendriteSegments()
 
 void Cell::resetButPredictive()
 {
+    m_bWasActive =
     m_bIsActive =
     m_bIsChosen =
     m_bIsLearning = false;
@@ -72,6 +74,7 @@ void Cell::resetButPredictive()
 
 void Cell::resetAll()
 {
+    m_bWasActive =
     m_bIsActive =
     m_bIsChosen =
     m_bIsLearning =
@@ -132,5 +135,16 @@ bool Cell::isChosen()
 bool Cell::isLearning()
 {
     return m_bIsLearning;
+}
+
+bool Cell::wasActive()
+{
+    if (m_bWasActive)
+    {
+        m_bWasActive = false;
+        return true;
+    }
+
+    return false;
 }
 

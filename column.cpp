@@ -56,7 +56,7 @@ void Column::setActive()
     {
         if (m_listCell.at(i)->isPredictive())
         {
-            m_listCell.at(i)->setActive();
+            m_listCell.at(i)->setActive(true);
             hasOnePredictiveAtLeast = true;
         }
     }
@@ -65,7 +65,7 @@ void Column::setActive()
     {
         for (int i=0; i<m_listCell.size(); ++i)
         {
-            m_listCell.at(i)->setActive();
+            m_listCell.at(i)->setActive(true);
         }
     }
 }

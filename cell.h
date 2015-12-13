@@ -67,9 +67,14 @@ public:
     bool isPredictive();
     bool isChosen();
     bool isLearning();
+    // to tell if the cell was active the immediately prior
+    // if the cell was active, after get the status, set it to false
+    // i.e. the "wasActive" should be only used for once
+    bool wasActive();
 
 private:
 
+    bool m_bWasActive;
     bool m_bIsActive;
     bool m_bIsPredictive;
 

@@ -74,7 +74,6 @@ void Organiser::buildColumns(int nWidth, int nHeight)
 
             // every column has only one proximal dendriteSegment
             columnTmp->setDendriteSegment(new DendriteSegment);
-
         }
     }
 }
