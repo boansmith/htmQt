@@ -12,8 +12,49 @@ Organiser::Organiser(QObject *parent) : QObject(parent)
 }
 
 
+void Organiser::buildSpatialPooler()
+{
+    buildInputElements();
+    buildColumns();
+    connectElements();
+}
+
+void Organiser::feedSpatialPooler(const QList<bool> &data)
+{
+    int nWidth  = HtmGlobal::m_nWidthInput;
+    int nHeight = HtmGlobal::m_nHeightInput;
+    Q_ASSERT(data.size() == nWidth*nHeight);
+
+    for (int i=0; i<nHeight; ++i)
+    {
+        for (int j=0; j<nWidth; ++j)
+        {
+            if (data.at(nWidth*i+j))
+            {
+                m_listInputs.at(nWidth*i+j)->setValue(true);
+            }
+            else
+            {
+                m_listInputs.at(nWidth*i+j)->setValue(false);
+            }
+        }
+    }
+
+    // this is one way, check after set all the values,
+    // the alternative is to check one by one only if the element's value is set, there will be just one double for
+    // loop if so.
+    for (int i=0; i<nHeight; ++i)
+    {
+        for (int j=0; j<nWidth; ++j)
+        {
+            m_listInputs.at(nWidth*i+j)->checkValue();
+        }
+    }
+}
+
+
 // process binary inputs
-void Organiser::fillInputs(const char *data)
+void Organiser::buildInputElements()
 {
     int nWidth  = HtmGlobal::m_nWidthInput;
     int nHeight = HtmGlobal::m_nHeightInput;
@@ -22,15 +63,9 @@ void Organiser::fillInputs(const char *data)
     {
         for (int j=0; j<nWidth; ++j)
         {
-            // need to do: set the InputElement's value according to  'data'
             m_listInputs << new InputElement(false);
         }
     }
-}
-
-void Organiser::fillInputs(const QByteArray &ba)
-{
-    ba.size()
 }
 
 
@@ -47,29 +82,6 @@ void Organiser::buildColumns()
     int nWidth  = HtmGlobal::m_nWidthColumn;
     int nHeight = HtmGlobal::m_nHeightColumn;
 
-    for (int i=0; i<nHeight; ++i)
-    {
-        for (int j=0; j<nWidth; ++j)
-        {
-            Column* columnTmp = new Column(i*nWidth+j);
-            m_listColumns << columnTmp;
-
-            // every column has only one proximal dendriteSegment
-            columnTmp->setDendriteSegment(new DendriteSegment);
-        }
-    }
-}
-
-
-/**
- * @brief Organiser::buildColumns
- *        the same with above but need the width and height to be specified
- * @param nWidth
- * @param nHeight
- * @return
- */
-void Organiser::buildColumns(int nWidth, int nHeight)
-{
     for (int i=0; i<nHeight; ++i)
     {
         for (int j=0; j<nWidth; ++j)
@@ -105,6 +117,7 @@ bool Organiser::connectElements()
     // every column should connect to a subset of input elements
     
     //float fWidthOverlap = 0.05;
+    // this place need to be optimized
     float fWidthOverlap = 1.0/float(m_listColumns.size())+0.01;
     float fBeginRatio   = 0.0;
     float fEndRatio     = 0.0;

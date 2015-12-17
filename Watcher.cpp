@@ -28,7 +28,7 @@ QList<Column *> Watcher::getActiveColumns()
         listOverlaps << (*iter)->overlap();
     }
 
-    // get the sorted list (from small to large)
+    // get the sorted list (from min to max)
     qSort(listOverlaps.begin(), listOverlaps.end());
 
     // get the threshold of being active

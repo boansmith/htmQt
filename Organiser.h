@@ -26,25 +26,30 @@ class Organiser : public QObject
 public:
     explicit Organiser(QObject *parent = 0);
 
-    // process binary inputs
-    void fillInputs(const char* data);
+    // build the whole SPATIAL POOLER
+    // including the
+    // *input*
+    // *columns*
+    // *proximal dendriteSegments*
+    // *synapses*
+    // but connection between cell and cell is not created here, it is in Watcher
+    // because they are created dynamicly
+    void buildSpatialPooler();
 
-    void fillInputs(const QByteArray& ba);
-
-    // not only build columns, but also build what inside it.
-    void buildColumns();
-    void buildColumns(int nWidth, int nHeight);
-
-    // connect various elements
-    bool connectElements();
-
+    void feedSpatialPooler(const QList<bool>& data);
 
     // for Watcher
     QList<Column *> listColumns() const;
 
-signals:
+private:
+    // not only build columns, but also build what inside it.
+    void buildColumns();
 
-public slots:
+    // process binary inputs
+    void buildInputElements();
+
+    // connect various elements
+    bool connectElements();
 
 private:
 

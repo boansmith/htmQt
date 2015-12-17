@@ -13,6 +13,7 @@ public:
 
     void fillSynapses(Synapse *s);
 
+    // only those who belong to winning column can update their synapses
     void updateSynapsesParams();
 
     // ****   THIS IS AN IMPORTANT STEP ****
