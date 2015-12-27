@@ -28,13 +28,15 @@ public:
     // including update the BOOST and PERMANENCES of the always "failed" synapses
     void adjustActivity();
 
-
-    // create organiser
-    // one organiser is a layer
+    // one organiser creates one region(or a level)
     void init();
 
     // start to process
     bool start();
+
+private:
+    // read an image file, turn it into the format that HTM can process
+    void preprocessData(QString filePath);
 
 signals:
 
@@ -43,6 +45,8 @@ public slots:
 private:
     QList<Column*> m_listActiveColumns;
     Organiser*     m_layer1;
+
+    QList<bool>    m_listData;
 };
 
 #endif // WATCHER_H

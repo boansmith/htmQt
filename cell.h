@@ -54,8 +54,8 @@ private:
     /*
      * 由此cell发出去的 dendrite segment, 作用为搜集其它细胞的active状态， 以便使自己成为 predictive
      * dendrite segment 直接与其它细胞通过synapse进行连接
-     * dendrite segment 包含 synapses
-     * 但是怎样选择要连接的细胞呢？
+     * dendrite segment includes synapses
+     * But how to choose the cell to connect？
      * should follow the rules below,maybe:
      * the immediately prior active cell should "PREDICT" the cell which is active now
     */

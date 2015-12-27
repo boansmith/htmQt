@@ -17,8 +17,6 @@ signals:
      */
     void activated();
 
-
-
 public slots:
     /**
      * @brief onRecv

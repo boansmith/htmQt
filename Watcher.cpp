@@ -5,6 +5,8 @@
 #include "dendritesegment.h"
 #include "synapse.h"
 
+#include <QFile>
+
 Watcher::Watcher(QObject *parent) : QObject(parent)
 {
     m_layer1 = new Organiser;
@@ -112,20 +114,36 @@ void Watcher::adjustActivity()
 void Watcher::init()
 {
     // build columns as default
-    m_layer1->buildColumns();
-
-    //need to give an input array
-//    m_layer1->fillInputs(blabla);
-
-    // connect elements of columns
-    m_layer1->connectElements();
-
+    m_layer1->buildSpatialPooler();
 }
 
 bool Watcher::start()
 {
     // set the input to start the whole thing
 
+
     return true;
+}
+
+void Watcher::preprocessData(QString filePath)
+{
+    QFile file(filePath);
+    file.open(QIODevice::ReadOnly);
+
+    QByteArray ba = file.readAll();
+
+    m_listData.clear();
+    for (int i=0; i<ba.size(); ++i)
+    {
+        // need to opt
+        if (ba.at(i) > 0)
+        {
+            m_listData << true;
+        }
+        else
+        {
+            m_listData << false;
+        }
+    }
 }
 

@@ -53,7 +53,6 @@ void Organiser::feedSpatialPooler(const QList<bool> &data)
 }
 
 
-// process binary inputs
 void Organiser::buildInputElements()
 {
     int nWidth  = HtmGlobal::m_nWidthInput;
