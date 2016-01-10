@@ -7,8 +7,8 @@ class Synapse : public QObject
 {
     Q_OBJECT
 public:
-    explicit Synapse(int nId, float perm, QObject *parent = 0);
-    explicit Synapse(int nId, QObject *parent=0);
+    explicit Synapse(float perm, QObject *parent = 0);
+    explicit Synapse(QObject *parent=0);
 
 signals:
     /**
@@ -57,8 +57,6 @@ private:
      * 是否同时处于connected并且接受到有效input
      */
     bool    m_bIsActivated;
-
-    int     m_nId;
 
     int     m_nActiveTimes;
 

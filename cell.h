@@ -21,7 +21,7 @@ class Cell : public QObject
 {
     Q_OBJECT
 public:
-    explicit Cell(QObject *parent = 0);
+    explicit Cell(int nId, QObject *parent = 0);
 
     // dendriteSegments in a cell are used to collect other cell's active state
     // to make THIS cell be predictive
@@ -36,6 +36,9 @@ public:
     // reset THIS cell's states
     void resetButPredictive();
     void resetAll();
+
+    // id of this cell
+    int id();
 
 
 signals:
@@ -89,6 +92,7 @@ private:
     bool m_bIsChosen;
     bool m_bIsLearning;
 
+    int m_nId;
 };
 
 #endif // CELL_H

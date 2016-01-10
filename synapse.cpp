@@ -5,24 +5,22 @@
 
 
 // 用于从文件载入时
-Synapse::Synapse(int nId, float perm, QObject *parent) :
+Synapse::Synapse(float perm, QObject *parent) :
     QObject(parent)
 {
-    m_nId   = nId;
     m_fPerm = perm;
     m_nActiveTimes = 0;
 }
 
-Synapse::Synapse(int nId, QObject *parent) :
+Synapse::Synapse(QObject *parent) :
     QObject(parent)
 {
-    m_nId = nId;
     m_nActiveTimes = 0;
 
     QTime time;
     time = QTime::currentTime();
     qsrand(time.msec() + time.second()*1000);
-    float delta = (qrand()%200- 100)*0.01;
+    float delta = (qrand()%200- 100)*0.002;
 
     qDebug() << "random delta: " << delta << "\n";
 
@@ -57,7 +55,15 @@ bool Synapse::isConnected()
 // activated 是指收到valid input，同时synapse 处于 connected状态
 bool Synapse::isActivated()
 {
-    return m_bIsActivated;
+    bool b = false;
+
+    if (m_bIsActivated)
+    {
+        b = true;
+        m_bIsActivated = false;
+    }
+
+    return b;
 }
 
 int Synapse::activeTimes()

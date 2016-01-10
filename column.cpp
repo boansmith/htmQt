@@ -13,9 +13,9 @@ Column::Column(int nId, QObject *parent) :
     m_fBoost            = 1.0;
 
     // fill each column with cells
-    for (int iCell=0; iCell<HtmGlobal::m_nCellsPerCol; ++iCell)
+    for (int i=0; i<HtmGlobal::m_nCellsPerCol; ++i)
     {
-        m_listCell << new Cell;
+        m_listCell << new Cell(i);
     }
 
 }
@@ -40,7 +40,7 @@ DendriteSegment *Column::dendriteSegment()
 
 
 
-// 如果有cell处于 predictive 状态， 则设定这些cell为active
+// 如果  有 cell处于 predictive 状态， 则设定这些cell为active
 // 如果没有一个cell处于 predictive 状态， 则所有的cell 均被设为 active
 void Column::setActive()
 {

@@ -41,8 +41,8 @@ void Organiser::feedSpatialPooler(const QList<bool> &data)
     }
 
     // this is one way, check after set all the values,
-    // the alternative is to check one by one only if the element's value is set, there will be just one double for
-    // loop if so.
+    // the alternative is to check one by one only if the element's value is set, there will be just one
+    // double for-loop if so.
     for (int i=0; i<nHeight; ++i)
     {
         for (int j=0; j<nWidth; ++j)
@@ -120,16 +120,16 @@ bool Organiser::connectElements()
     float fWidthOverlap = 1.0/float(m_listColumns.size())+0.01;
     float fBeginRatio   = 0.0;
     float fEndRatio     = 0.0;
+    int nColSize = m_listColumns.size();
     
     for (int i=0; i<m_listInputs.size(); ++i)
     {
         fBeginRatio = float(i)/float(m_listInputs.size());
         fEndRatio   = fBeginRatio + fWidthOverlap;
-        int nColSize = m_listColumns.size();
         int nUpper = nColSize*fEndRatio > nColSize ? nColSize : nColSize*fEndRatio;
         for (int j=nColSize*fBeginRatio; j<nUpper; ++j)
         {
-            Synapse* sTmp = new Synapse(j);
+            Synapse* sTmp = new Synapse;
 
             m_listInputs.at(i)->fillSynapses(sTmp);
             m_listColumns.at(j)->dendriteSegment()->fillSynapses(sTmp);

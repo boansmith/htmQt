@@ -3,8 +3,9 @@
 #include "synapse.h"
 
 
-Cell::Cell(QObject *parent) : QObject(parent)
+Cell::Cell(int nId, QObject *parent) : QObject(parent)
 {
+    m_nId = nId;
     m_bIsActive = false;
     m_bIsPredictive = false;
     m_bIsChosen = false;
@@ -39,6 +40,11 @@ void Cell::resetAll()
     m_bIsChosen =
     m_bIsLearning =
     m_bIsPredictive = false;
+}
+
+int Cell::id()
+{
+    return m_nId;
 }
 
 void Cell::onRecvSegmentActivated()
