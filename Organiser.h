@@ -42,6 +42,9 @@ public:
     // for Watcher
     QList<Column *> listColumns() const;
 
+    // set input
+    void setInput(QList<bool> data);
+
 private:
     // input elements are not input but they're needed to process the input.
     void buildInputElements();

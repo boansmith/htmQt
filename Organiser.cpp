@@ -100,6 +100,14 @@ QList<Column *> Organiser::listColumns() const
     return m_listColumns;
 }
 
+void Organiser::setInput(QList<bool> data)
+{
+    for (int i=0; i<data.size(); ++i)
+    {
+        m_listInputs.at(i)->setValue(data.at(i));
+    }
+}
+
 
 
 /**

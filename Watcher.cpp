@@ -6,6 +6,8 @@
 #include "synapse.h"
 
 #include <QFile>
+#include <QImage>
+#include <QMessageBox>
 
 Watcher::Watcher(QObject *parent) : QObject(parent)
 {
@@ -113,8 +115,18 @@ void Watcher::adjustActivity()
 
 void Watcher::init()
 {
-    // build columns as default
+    // build spatial pooler
     m_layer1->buildSpatialPooler();
+
+    // check if input is ready
+    if (m_listData.isEmpty())
+    {
+        QMessageBox::warning(0, "", "Input is empty!");
+        return;
+    }
+
+    // set input
+    m_layer1->setInput(m_listData);
 }
 
 bool Watcher::start()
@@ -127,16 +139,16 @@ bool Watcher::start()
 
 void Watcher::preprocessData(QString filePath)
 {
-    QFile file(filePath);
-    file.open(QIODevice::ReadOnly);
-
-    QByteArray ba = file.readAll();
+    QImage img(filePath);
+    uchar* data = img.bits();
+    int size = img.size().width()*img.size().height();
 
     m_listData.clear();
-    for (int i=0; i<ba.size(); ++i)
+
+    for (int i=0; i<size; ++i)
     {
         // need to opt
-        if (ba.at(i) > 0)
+        if (data[i] > 100)
         {
             m_listData << true;
         }
